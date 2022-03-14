@@ -1,4 +1,4 @@
-name: "renv-test"
+name: "renv-profiles-test"
 title: "{renv} Profiles Test Blog"
 description: |
   A test blog for investigating use of {renv} profiles for reproducibility on a 

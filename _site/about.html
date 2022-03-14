@@ -2091,12 +2091,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1 id="author">Author</h1>
 <p>I am <a href="https://www.matt-dray.com">Matt Dray</a>. This blog was created to support a post on <a href="https://www.rostrum.blog/">rostrum.blog</a>.</p>
 <h1 id="purpose">Purpose</h1>
-<p>This is <a href="https://rstudio.github.io/distill/">a {distill} blog</a> whose sole purpose is to test whether <a href="https://rstudio.github.io/renv/">{renv}</a> might be a viable solution for reproducibility on a post-by-post basis.</p>
+<p>Functionality comes and goes in R packages. How do you deal with that in the context of a blog built with R?</p>
+<p>The sole purpose of this <a href="https://rstudio.github.io/distill/">{distill} blog</a> is to test whether <a href="https://rstudio.github.io/renv/">{renv}</a> might be a viable solution for reproducibility on a post-by-post basis.</p>
 <p>{renv} typically works on the scale of a whole project, but <a href="https://rstudio.github.io/renv/articles/profiles.htm">since version 0.13.0</a> you can have multiple profiles <em>within</em> a given project.</p>
 <p>I think this means that each post can have its own profile with its own distinct set of packages and package versions.</p>
 <p>That means you can easily recreate the specific package environment for a given post if you need to alter and re-render it in future.</p>
 <h1 id="example">Example</h1>
-<p>Functionality comes and goes in packages. This demo blog shows how you might get around that.</p>
 <p>There are two posts on this blog. They both use the {dplyr} package, but one depends on an old version (0.8.5) and one depends on the current version (1.0.8).</p>
 <p>Using {renv} profiles means that these package versions don’t interfere with each other.</p>
 <p>The post depending on the older {dplyr} version can’t access <code>across()</code>, but the post depending on the newer {dplyr} version can use <code>across()</code>. The environments associated with the profiles for each post are totally isolated from each other.</p>

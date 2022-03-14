@@ -10,7 +10,9 @@ I am [Matt Dray](https://www.matt-dray.com). This blog was created to support a 
 
 # Purpose
 
-This is [a {distill} blog](https://rstudio.github.io/distill/) whose sole purpose is to test whether [{renv}](https://rstudio.github.io/renv/) might be a viable solution for reproducibility on a post-by-post basis.
+Functionality comes and goes in R packages. How do you deal with that in the context of a blog built with R?
+
+The sole purpose of this [{distill} blog](https://rstudio.github.io/distill/) is to test whether [{renv}](https://rstudio.github.io/renv/) might be a viable solution for reproducibility on a post-by-post basis.
 
 {renv} typically works on the scale of a whole project, but [since version 0.13.0](https://rstudio.github.io/renv/articles/profiles.htm) you can have multiple profiles _within_ a given project.
 
@@ -19,8 +21,6 @@ I think this means that each post can have its own profile with its own distinct
 That means you can easily recreate the specific package environment for a given post if you need to alter and re-render it in future.
 
 # Example
-
-Functionality comes and goes in packages. This demo blog shows how you might get around that.
 
 There are two posts on this blog. They both use the {dplyr} package, but one depends on an old version (0.8.5) and one depends on the current version (1.0.8). 
 
