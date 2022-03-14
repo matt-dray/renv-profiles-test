@@ -1,7 +1,7 @@
 ---
-title: "An old {dplyr} version"
+title: "A newer {dplyr} version"
 description: |
-  Rendering a post using a {renv} profile with {dplyr} version 0.8.5.
+  Rendering a post using a {renv} profile with {dplyr} version 1.0.8.
 author:
   - name: Matt Dray
 date: 2022-03-14
