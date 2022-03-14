@@ -1,10 +1,10 @@
 ---
-title: "An old {dplyr} version"
+title: "Test with an old {dplyr} version"
 description: |
   Rendering a post using a {renv} profile with {dplyr} version 0.8.5.
 author:
   - name: Matt Dray
-date: 2022-03-13
+date: 2022-03-14
 output:
   distill::distill_article:
     self_contained: false
@@ -12,33 +12,31 @@ output:
 
 # Set up
 
-First, I created this post.
+To generate this demo, I:
+
+1. Created this new post
+1. Activated a {renv} profile with a unique name
+1. Installed the packages needed for the post
+1. Captured the dependencies in the profile's lockfile
 
 ```{r eval=FALSE}
-distill::create_post("dplyr-0.8.5")
-```
+distill::create_post("dplyr-085")
 
-Then I activated a new {renv} profile for the post. I matched the profile name with the name of the post's Rmd file.
-
-```{r eval=FALSE}
 renv::activate(profile = "2022-03-14-dplyr-085")
-```
 
-Then I installed the packages needed for this post and finally snapshot them to the {renv} lockfile.
-
-```{r eval=FALSE}
 renv::install(
   "distill",
   "rmarkdown",
   "palmerpenguins",
   "dplyr@0.8.5"
 )
+
 renv::snapshot()
 ```
 
-To demonstrate package dependency control, I've installed {dplyr} version 0.8.5 for this post, which is the version before the `across()` function was introduced.
+To demonstrate package dependency control, I've installed {dplyr} version 0.8.5 for this post, which is the version [before the `across()` function was introduced](https://dplyr.tidyverse.org/news/index.html#across-1-0-0).
 
-I've written another post that uses the latest version (1.0.8) of {dplyr}.
+I've written another post that uses a newer version (1.0.8) of {dplyr} to prove that the dependencies don't conflict.
 
 # Proof
 
@@ -62,4 +60,3 @@ palmerpenguins::penguins %>%
   mutate_at(vars(species, island), tolower) %>% 
   head()
 ```
-

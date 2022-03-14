@@ -1,10 +1,40 @@
 ---
-title: "About this blog"
+title: "About"
 description: |
-  Some additional details about the blog
+  This blog exists to test {renv} profiles for {distill} blog posts.
 ---
 
-This is a {distill} blog to test out whether {renv} profiles might be a viable solution for reproducibility on a post-by-post basis.
+# Author
 
-{renv} used to work on the scale of the project, but since version 0.13 you can have multiple profiles _within_ a given project.
+I am [Matt Dray](https://www.matt-dray.com). This blog was created to support a post on [rostrum.blog](https://www.rostrum.blog/).
 
+# Purpose
+
+This is [a {distill} blog](https://rstudio.github.io/distill/) whose sole purpose is to test whether [{renv}](https://rstudio.github.io/renv/) might be a viable solution for reproducibility on a post-by-post basis.
+
+{renv} typically works on the scale of a whole project, but [since version 0.13.0](https://rstudio.github.io/renv/articles/profiles.htm) you can have multiple profiles _within_ a given project.
+
+I think this means that each post can have its own profile with its own distinct set of packages and package versions.
+
+That means you can easily recreate the specific package environment for a given post if you need to alter and re-render it in future.
+
+# Example
+
+Functionality comes and goes in packages. This demo blog shows how you might get around that.
+
+There are two posts on this blog. They both use the {dplyr} package, but one depends on an old version (0.8.5) and one depends on the current version (1.0.8). 
+
+Using {renv} profiles means that these package versions don't interfere with each other. 
+
+The post depending on the older {dplyr} version can't access `across()`, but the post depending on the newer {dplyr} version can use `across()`. The environments associated with the profiles for each post are totally isolated from each other.
+
+# How
+
+After creating your blog with `distill::create_blog()`, building it and initiating a reproducible environment with `renv::init()`, a new-post workflow could look like this:
+
+1. Create a new post with `distill_create_post()`
+1. Activate a profile for the new post with `renv::activate()`, providing a unique name to the `profile` argument (I suggest the post's folder name as seen in the blog's _posts/ folder)
+1. Install the packages you need for the post with `renv::install()`
+1. Capture the dependencies in the profile's lockfile with `renv::snapshot()`
+
+You can return to the default {renv} profile for the blog as a whole with `renv::activate(profile = NULL)`. This is the profile for when you first ran `renv::init()`.

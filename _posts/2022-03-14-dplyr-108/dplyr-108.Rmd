@@ -1,5 +1,5 @@
 ---
-title: "A newer {dplyr} version"
+title: "Test with a new {dplyr} version"
 description: |
   Rendering a post using a {renv} profile with {dplyr} version 1.0.8.
 author:
@@ -12,33 +12,31 @@ output:
 
 # Set up
 
-First, I created this post.
+To generate this demo, I:
+
+1. Created this new post
+1. Activated a {renv} profile with a unique name
+1. Installed the packages needed for the post
+1. Captured the dependencies in the profile's lockfile
 
 ```{r eval=FALSE}
-distill::create_post("dplyr-1.0.8")
-```
+distill::create_post("dplyr-108")
 
-Then I activated a new {renv} profile for the post. I matched the profile name with the name of the post's Rmd file.
-
-```{r eval=FALSE}
 renv::activate(profile = "2022-03-14-dplyr-108")
-```
 
-Then I installed the packages needed for this post and finally snapshot them to the {renv} lockfile.
-
-```{r eval=FALSE}
 renv::install(
   "distill",
   "rmarkdown",
   "palmerpenguins",
   "dplyr@1.0.8"
 )
+
 renv::snapshot()
 ```
 
-To demonstrate package dependency control, I've installed {dplyr} version 1.0.8 for this post, which is the current version and includes the `across()` function was introduced.
+To demonstrate package dependency control, I've installed {dplyr} version 1.0.8 for this post, which is the current version and includes the `across()` function [introduced in version 1.0.0](https://dplyr.tidyverse.org/news/index.html#across-1-0-0).
 
-I've written another post that uses an older version (0.8.5) of {dplyr}.
+I've written another post that uses an older version (0.8.5) of {dplyr} to prove that the dependencies don't conflict.
 
 # Proof
 
@@ -52,7 +50,7 @@ any(grepl("across", ls("package:dplyr")))
 
 # Demo
 
-This means we can use `across()`, rather than {dplyr}'s old approach of  the `*_if()`, `*_at()` and `*_all()` variants of verbs like `mutate()` and `summarise()`.
+This means we can use `across()`, rather than {dplyr}'s old approach of the `*_if()`, `*_at()` and `*_all()` variants of verbs like `mutate()` and `summarise()`.
 
 Here's a very small example.
 

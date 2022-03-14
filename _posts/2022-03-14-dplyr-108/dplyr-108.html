@@ -87,7 +87,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>A newer {dplyr} version</title>
+  <title>Test with a new {dplyr} version</title>
 
   <meta property="description" itemprop="description" content="Rendering a post using a {renv} profile with {dplyr} version 1.0.8."/>
 
@@ -98,21 +98,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Matt Dray"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="A newer {dplyr} version"/>
+  <meta property="og:title" content="Test with a new {dplyr} version"/>
   <meta property="og:type" content="article"/>
   <meta property="og:description" content="Rendering a post using a {renv} profile with {dplyr} version 1.0.8."/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="A newer {dplyr} version"/>
+  <meta property="twitter:title" content="Test with a new {dplyr} version"/>
   <meta property="twitter:description" content="Rendering a post using a {renv} profile with {dplyr} version 1.0.8."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["A newer {dplyr} version"]},{"type":"character","attributes":{},"value":["Rendering a post using a {renv} profile with {dplyr} version 1.0.8.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Matt Dray"]}]}]},{"type":"character","attributes":{},"value":["2022-03-14"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Test with a new {dplyr} version"]},{"type":"character","attributes":{},"value":["Rendering a post using a {renv} profile with {dplyr} version 1.0.8.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Matt Dray"]}]}]},{"type":"character","attributes":{},"value":["2022-03-14"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1459,7 +1459,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"A newer {dplyr} version","description":"Rendering a post using a {renv} profile with {dplyr} version 1.0.8.","authors":[{"author":"Matt Dray","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-14T00:00:00.000+00:00","citationText":"Dray, 2022"}
+{"title":"Test with a new {dplyr} version","description":"Rendering a post using a {renv} profile with {dplyr} version 1.0.8.","authors":[{"author":"Matt Dray","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-14T00:00:00.000+00:00","citationText":"Dray, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1469,7 +1469,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>A newer {dplyr} version</h1>
+<h1>Test with a new {dplyr} version</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p><p>Rendering a post using a {renv} profile with {dplyr} version 1.0.8.</p></p>
@@ -1483,35 +1483,32 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h1 id="set-up">Set up</h1>
-<p>First, I created this post.</p>
+<p>To generate this demo, I:</p>
+<ol type="1">
+<li>Created this new post</li>
+<li>Activated a {renv} profile with a unique name</li>
+<li>Installed the packages needed for the post</li>
+<li>Captured the dependencies in the profile’s lockfile</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>distill</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/distill/man/create_post.html'>create_post</a></span><span class='op'>(</span><span class='st'>"dplyr-1.0.8"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>Then I activated a new {renv} profile for the post. I matched the profile name with the name of the post’s Rmd file.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>renv</span><span class='fu'>::</span><span class='fu'><a href='https://rstudio.github.io/renv/reference/activate.html'>activate</a></span><span class='op'>(</span>profile <span class='op'>=</span> <span class='st'>"2022-03-14-dplyr-108"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>Then I installed the packages needed for this post and finally snapshot them to the {renv} lockfile.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>renv</span><span class='fu'>::</span><span class='fu'><a href='https://rstudio.github.io/renv/reference/install.html'>install</a></span><span class='op'>(</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>distill</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/distill/man/create_post.html'>create_post</a></span><span class='op'>(</span><span class='st'>"dplyr-108"</span><span class='op'>)</span>
+
+<span class='fu'>renv</span><span class='fu'>::</span><span class='fu'><a href='https://rstudio.github.io/renv/reference/activate.html'>activate</a></span><span class='op'>(</span>profile <span class='op'>=</span> <span class='st'>"2022-03-14-dplyr-108"</span><span class='op'>)</span>
+
+<span class='fu'>renv</span><span class='fu'>::</span><span class='fu'><a href='https://rstudio.github.io/renv/reference/install.html'>install</a></span><span class='op'>(</span>
   <span class='st'>"distill"</span>,
   <span class='st'>"rmarkdown"</span>,
   <span class='st'>"palmerpenguins"</span>,
   <span class='st'>"dplyr@1.0.8"</span>
 <span class='op'>)</span>
+
 <span class='fu'>renv</span><span class='fu'>::</span><span class='fu'><a href='https://rstudio.github.io/renv/reference/snapshot.html'>snapshot</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>To demonstrate package dependency control, I’ve installed {dplyr} version 1.0.8 for this post, which is the current version and includes the <code>across()</code> function was introduced.</p>
-<p>I’ve written another post that uses an older version (0.8.5) of {dplyr}.</p>
+<p>To demonstrate package dependency control, I’ve installed {dplyr} version 1.0.8 for this post, which is the current version and includes the <code>across()</code> function <a href="https://dplyr.tidyverse.org/news/index.html#across-1-0-0">introduced in version 1.0.0</a>.</p>
+<p>I’ve written another post that uses an older version (0.8.5) of {dplyr} to prove that the dependencies don’t conflict.</p>
 <h1 id="proof">Proof</h1>
 <p>We can prove the <code>across()</code> function exists for the version of {dplyr} installed with the ‘2022-03-14-dplyr-108’ profile.</p>
 <div class="layout-chunk" data-layout="l-body">

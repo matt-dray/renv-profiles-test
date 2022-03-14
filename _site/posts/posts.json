@@ -1,7 +1,24 @@
 [
   {
+    "path": "posts/2022-03-14-dplyr-085/",
+    "title": "Test with an old {dplyr} version",
+    "description": "Rendering a post using a {renv} profile with {dplyr} version 0.8.5.",
+    "author": [
+      {
+        "name": "Matt Dray",
+        "url": {}
+      }
+    ],
+    "date": "2022-03-14",
+    "categories": [],
+    "contents": "\nSet up\nTo generate this demo, I:\nCreated this new post\nActivated a {renv} profile with a unique name\nInstalled the packages needed for the post\nCaptured the dependencies in the profile’s lockfile\n\n\ndistill::create_post(\"dplyr-085\")\n\nrenv::activate(profile = \"2022-03-14-dplyr-085\")\n\nrenv::install(\n  \"distill\",\n  \"rmarkdown\",\n  \"palmerpenguins\",\n  \"dplyr@0.8.5\"\n)\n\nrenv::snapshot()\n\n\n\nTo demonstrate package dependency control, I’ve installed {dplyr} version 0.8.5 for this post, which is the version before the across() function was introduced.\nI’ve written another post that uses a newer version (1.0.8) of {dplyr} to prove that the dependencies don’t conflict.\nProof\nWe can prove the across() function doesn’t exist for the version of {dplyr} installed with the ‘2022-03-14-dplyr-085’ profile.\n\n\nsuppressPackageStartupMessages(library(dplyr))\npackageVersion(\"dplyr\")\n\n\n[1] '0.8.5'\n\nany(grepl(\"across\", ls(\"package:dplyr\")))\n\n\n[1] FALSE\n\nDemo\nThis means we have to make do with {dplyr}’s old functionality for across(), which amounts to the *_if(), *_at() and *_all() variants of verbs like mutate() and summarise().\nHere’s a very small example.\n\n\npalmerpenguins::penguins %>% \n  select_if(is.factor) %>% \n  mutate_at(vars(species, island), tolower) %>% \n  head()\n\n\n# A tibble: 6 × 3\n  species island    sex   \n  <chr>   <chr>     <fct> \n1 adelie  torgersen male  \n2 adelie  torgersen female\n3 adelie  torgersen female\n4 adelie  torgersen <NA>  \n5 adelie  torgersen female\n6 adelie  torgersen male  \n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-03-14T14:26:56+00:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2022-03-14-dplyr-108/",
-    "title": "A newer {dplyr} version",
+    "title": "Test with a new {dplyr} version",
     "description": "Rendering a post using a {renv} profile with {dplyr} version 1.0.8.",
     "author": [
       {
@@ -11,26 +28,9 @@
     ],
     "date": "2022-03-14",
     "categories": [],
-    "contents": "\nSet up\nFirst, I created this post.\n\n\ndistill::create_post(\"dplyr-1.0.8\")\n\n\n\nThen I activated a new {renv} profile for the post. I matched the profile name with the name of the post’s Rmd file.\n\n\nrenv::activate(profile = \"2022-03-14-dplyr-108\")\n\n\n\nThen I installed the packages needed for this post and finally snapshot them to the {renv} lockfile.\n\n\nrenv::install(\n  \"distill\",\n  \"rmarkdown\",\n  \"palmerpenguins\",\n  \"dplyr@1.0.8\"\n)\nrenv::snapshot()\n\n\n\nTo demonstrate package dependency control, I’ve installed {dplyr} version 1.0.8 for this post, which is the current version and includes the across() function was introduced.\nI’ve written another post that uses an older version (0.8.5) of {dplyr}.\nProof\nWe can prove the across() function exists for the version of {dplyr} installed with the ‘2022-03-14-dplyr-108’ profile.\n\n\nsuppressPackageStartupMessages(library(dplyr))\npackageVersion(\"dplyr\")\n\n\n[1] '1.0.8'\n\nany(grepl(\"across\", ls(\"package:dplyr\")))\n\n\n[1] TRUE\n\nDemo\nThis means we can use across(), rather than {dplyr}’s old approach of the *_if(), *_at() and *_all() variants of verbs like mutate() and summarise().\nHere’s a very small example.\n\n\npalmerpenguins::penguins %>% \n  select(where(is.factor)) %>% \n  mutate(across(c(species, island), tolower)) %>% \n  head()\n\n\n# A tibble: 6 × 3\n  species island    sex   \n  <chr>   <chr>     <fct> \n1 adelie  torgersen male  \n2 adelie  torgersen female\n3 adelie  torgersen female\n4 adelie  torgersen <NA>  \n5 adelie  torgersen female\n6 adelie  torgersen male  \n\n\n\n\n",
+    "contents": "\nSet up\nTo generate this demo, I:\nCreated this new post\nActivated a {renv} profile with a unique name\nInstalled the packages needed for the post\nCaptured the dependencies in the profile’s lockfile\n\n\ndistill::create_post(\"dplyr-108\")\n\nrenv::activate(profile = \"2022-03-14-dplyr-108\")\n\nrenv::install(\n  \"distill\",\n  \"rmarkdown\",\n  \"palmerpenguins\",\n  \"dplyr@1.0.8\"\n)\n\nrenv::snapshot()\n\n\n\nTo demonstrate package dependency control, I’ve installed {dplyr} version 1.0.8 for this post, which is the current version and includes the across() function introduced in version 1.0.0.\nI’ve written another post that uses an older version (0.8.5) of {dplyr} to prove that the dependencies don’t conflict.\nProof\nWe can prove the across() function exists for the version of {dplyr} installed with the ‘2022-03-14-dplyr-108’ profile.\n\n\nsuppressPackageStartupMessages(library(dplyr))\npackageVersion(\"dplyr\")\n\n\n[1] '1.0.8'\n\nany(grepl(\"across\", ls(\"package:dplyr\")))\n\n\n[1] TRUE\n\nDemo\nThis means we can use across(), rather than {dplyr}’s old approach of the *_if(), *_at() and *_all() variants of verbs like mutate() and summarise().\nHere’s a very small example.\n\n\npalmerpenguins::penguins %>% \n  select(where(is.factor)) %>% \n  mutate(across(c(species, island), tolower)) %>% \n  head()\n\n\n# A tibble: 6 × 3\n  species island    sex   \n  <chr>   <chr>     <fct> \n1 adelie  torgersen male  \n2 adelie  torgersen female\n3 adelie  torgersen female\n4 adelie  torgersen <NA>  \n5 adelie  torgersen female\n6 adelie  torgersen male  \n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-03-14T13:22:41+00:00",
-    "input_file": "dplyr-108.knit.md"
-  },
-  {
-    "path": "posts/2022-03-14-dplyr-085/",
-    "title": "An old {dplyr} version",
-    "description": "Rendering a post using a {renv} profile with {dplyr} version 0.8.5.",
-    "author": [
-      {
-        "name": "Matt Dray",
-        "url": {}
-      }
-    ],
-    "date": "2022-03-13",
-    "categories": [],
-    "contents": "\nSet up\nFirst, I created this post.\n\n\ndistill::create_post(\"dplyr-0.8.5\")\n\n\n\nThen I activated a new {renv} profile for the post. I matched the profile name with the name of the post’s Rmd file.\n\n\nrenv::activate(profile = \"2022-03-14-dplyr-085\")\n\n\n\nThen I installed the packages needed for this post and finally snapshot them to the {renv} lockfile.\n\n\nrenv::install(\n  \"distill\",\n  \"rmarkdown\",\n  \"palmerpenguins\",\n  \"dplyr@0.8.5\"\n)\nrenv::snapshot()\n\n\n\nTo demonstrate package dependency control, I’ve installed {dplyr} version 0.8.5 for this post, which is the version before the across() function was introduced.\nI’ve written another post that uses the latest version (1.0.8) of {dplyr}.\nProof\nWe can prove the across() function doesn’t exist for the version of {dplyr} installed with the ‘2022-03-14-dplyr-085’ profile.\n\n\nsuppressPackageStartupMessages(library(dplyr))\npackageVersion(\"dplyr\")\n\n\n[1] '0.8.5'\n\nany(grepl(\"across\", ls(\"package:dplyr\")))\n\n\n[1] FALSE\n\nDemo\nThis means we have to make do with {dplyr}’s old functionality for across(), which amounts to the *_if(), *_at() and *_all() variants of verbs like mutate() and summarise().\nHere’s a very small example.\n\n\npalmerpenguins::penguins %>% \n  select_if(is.factor) %>% \n  mutate_at(vars(species, island), tolower) %>% \n  head()\n\n\n# A tibble: 6 × 3\n  species island    sex   \n  <chr>   <chr>     <fct> \n1 adelie  torgersen male  \n2 adelie  torgersen female\n3 adelie  torgersen female\n4 adelie  torgersen <NA>  \n5 adelie  torgersen female\n6 adelie  torgersen male  \n\n\n\n\n",
-    "preview": {},
-    "last_modified": "2022-03-14T13:22:13+00:00",
-    "input_file": "dplyr-085.knit.md"
+    "last_modified": "2022-03-14T14:28:16+00:00",
+    "input_file": {}
   }
 ]
