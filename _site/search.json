@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this blog",
+      "description": "Some additional details about the blog",
+      "author": [],
+      "contents": "\nThis is a {distill} blog to test out whether {renv} profiles might be a viable solution for reproducibility on a post-by-post basis.\n{renv} used to work on the scale of the project, but since version 0.13 you can have multiple profiles within a given project.\n\n\n\n",
+      "last_modified": "2022-03-14T12:36:00+00:00"
+    },
+    {
+      "path": "index.html",
+      "title": "{renv} Profiles Test Blog",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-03-14T12:36:01+00:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}

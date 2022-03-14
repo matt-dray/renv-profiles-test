@@ -1,0 +1,10 @@
+---
+title: "About this blog"
+description: |
+  Some additional details about the blog
+---
+
+This is a {distill} blog to test out whether {renv} profiles might be a viable solution for reproducibility on a post-by-post basis.
+
+{renv} used to work on the scale of the project, but since version 0.13 you can have multiple profiles _within_ a given project.
+

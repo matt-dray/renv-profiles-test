@@ -1,0 +1,3 @@
+renv::activate(profile = "2022-03-14-post-with-dplyr")
+renv::activate(profile = "2022-03-14-post-with-non-cran-package")
+renv::activate(profile = NULL)
