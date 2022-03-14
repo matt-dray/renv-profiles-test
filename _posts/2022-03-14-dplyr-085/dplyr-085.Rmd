@@ -1,0 +1,65 @@
+---
+title: "An old {dplyr} version"
+description: |
+  Rendering a post using a {renv} profile with {dplyr} version 0.8.5.
+author:
+  - name: Matt Dray
+date: 2022-03-14
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+# Set up
+
+First, I created this post.
+
+```{r eval=FALSE}
+distill::create_post("dplyr-0.8.5")
+```
+
+Then I activated a new {renv} profile for the post. I matched the profile name with the name of the post's Rmd file.
+
+```{r eval=FALSE}
+renv::activate(profile = "2022-03-14-dplyr-085")
+```
+
+Then I installed the packages needed for this post and finally snapshot them to the {renv} lockfile.
+
+```{r eval=FALSE}
+renv::install(
+  "distill",
+  "rmarkdown",
+  "palmerpenguins",
+  "dplyr@0.8.5"
+)
+renv::snapshot()
+```
+
+To demonstrate package dependency control, I've installed {dplyr} version 0.8.5 for this post, which is the version before the `across()` function was introduced.
+
+I've written another post that uses the latest version (1.0.8) of {dplyr}.
+
+# Proof
+
+We can prove the `across()` function doesn't exist for the version of {dplyr} installed with the '2022-03-14-dplyr-085' profile.
+
+```{r}
+suppressPackageStartupMessages(library(dplyr))
+packageVersion("dplyr")
+any(grepl("across", ls("package:dplyr")))
+```
+
+# Demo
+
+This means we have to make do with {dplyr}'s old functionality for `across()`, which amounts to the `*_if()`, `*_at()` and `*_all()` variants of verbs like `mutate()` and `summarise()`.
+
+Here's a very small example.
+
+```{r}
+palmerpenguins::penguins %>% 
+  select_if(is.factor) %>% 
+  mutate_at(vars(species, island), tolower) %>% 
+  head()
+```
+
