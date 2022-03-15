@@ -6,7 +6,7 @@ description: |
 
 # Author
 
-I am [Matt Dray](https://www.matt-dray.com). This blog was created to support a post on [rostrum.blog](https://www.rostrum.blog/).
+I am [Matt Dray](https://www.matt-dray.com). This blog was created to support a post on [rostrum.blog](https://www.rostrum.blog/2022/03/15/renv-profiles/). The [source is on GitHub](https://github.com/matt-dray/renv-profiles-test).
 
 # Purpose
 
